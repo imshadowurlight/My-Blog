@@ -12,6 +12,7 @@ public class ArchiveBo implements Serializable {
 
     private String date;
     private String count;
+    private String categories;
     private List<ContentVo> articles;
 
     public String getDate() {
@@ -38,12 +39,16 @@ public class ArchiveBo implements Serializable {
         this.articles = articles;
     }
 
+    public String getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String categories) {
+        this.categories = categories;
+    }
+
     @Override
     public String toString() {
-        return "Archive [" +
-                "date='" + date + '\'' +
-                ", count='" + count + '\'' +
-                ", articles=" + articles +
-                ']';
+        return "ArchiveBo{" + "date='" + date + '\'' + ", count='" + count + '\'' + ", categories='" + categories + '\'' + ", articles=" + articles + '}';
     }
 }

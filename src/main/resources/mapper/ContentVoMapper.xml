@@ -463,6 +463,17 @@
     select FROM_UNIXTIME(created, '%Y年%m月') as date, count(*) as count from t_contents where type = 'post' and status = 'publish' group by date order by date desc
   </select>
 
+  <resultMap id="archiveBoMapByCat" type="com.my.blog.website.modal.Bo.ArchiveBo">
+    <id column="categories" property="categories"/>
+    <result column="count" property="count"/>
+  </resultMap>
+
+  <select id="findReturnArchiveBoByCat" resultMap="archiveBoMapByCat">
+    SELECT  categories ,count(*) as count
+ 	  FROM t_contents
+ 	  GROUP BY categories
+ 	  ORDER BY categories
+  </select>
 
   <select id="findByCatalog" resultMap="BaseResultMap" parameterType="Integer">
     select a.*

@@ -240,4 +240,25 @@ public class SiteServiceImpl implements ISiteService {
 
     }
 
+    @Override
+    public List<ArchiveBo> getArchivesByCat() {
+        LOGGER.debug("Enter getArchivesByCat method");
+        List<ArchiveBo> archives = contentDao.findReturnArchiveBoByCat();
+
+
+            if (null != archives) {
+                archives.forEach(archive -> {
+                    ContentVoExample example = new ContentVoExample();
+                    ContentVoExample.Criteria criteria = example.createCriteria().andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
+                    example.setOrderByClause("created desc");
+                    criteria.andCategoriesEqualTo(archive.getCategories());
+                    List<ContentVo> contentss = contentDao.selectByExample(example);
+                    archive.setArticles(contentss);
+                });
+            }
+
+
+        LOGGER.debug("Exit getArchivesByCat method");
+        return archives;
+    }
 }

@@ -283,6 +283,18 @@ public class IndexController extends BaseController {
     }
 
     /**
+     * 文章分类归档
+     * @param request
+     * @return
+     * */
+    @GetMapping(value = "archivesByCat")
+    public String archivesByCat(HttpServletRequest request) {
+        List<ArchiveBo> archives = siteService.getArchivesByCat();
+        request.setAttribute("archives", archives);
+        return this.render("archives-category");
+    }
+
+    /**
      * 友链页
      *
      * @return
@@ -345,7 +357,7 @@ public class IndexController extends BaseController {
      * @param chits
      */
     @Transactional(rollbackFor = TipException.class)
-    private void updateArticleHit(Integer cid, Integer chits) {
+    public void updateArticleHit(Integer cid, Integer chits) {
         Integer hits = cache.hget("article", "hits");
         if (chits == null) {
             chits = 0;

@@ -41,4 +41,9 @@ public interface ContentVoMapper {
     List<ArchiveBo> findReturnArchiveBo();
 
     List<ContentVo> findByCatalog(Integer mid);
+
+    /**
+     * 查询文档的分类集合
+     * */
+    List<ArchiveBo> findReturnArchiveBoByCat();
 }

@@ -70,4 +70,8 @@ public interface ISiteService {
      */
     List<MetaDto> metas(String type, String orderBy, int limit);
 
+    /**
+     * 查询文章归档,按照分类进行归档
+     * */
+    List<ArchiveBo> getArchivesByCat();
 }
