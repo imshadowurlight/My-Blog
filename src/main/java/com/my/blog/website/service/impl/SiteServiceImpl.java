@@ -244,8 +244,6 @@ public class SiteServiceImpl implements ISiteService {
     public List<ArchiveBo> getArchivesByCat() {
         LOGGER.debug("Enter getArchivesByCat method");
         List<ArchiveBo> archives = contentDao.findReturnArchiveBoByCat();
-
-
             if (null != archives) {
                 archives.forEach(archive -> {
                     ContentVoExample example = new ContentVoExample();
@@ -256,9 +254,9 @@ public class SiteServiceImpl implements ISiteService {
                     archive.setArticles(contentss);
                 });
             }
-
-
         LOGGER.debug("Exit getArchivesByCat method");
         return archives;
     }
+
+
 }

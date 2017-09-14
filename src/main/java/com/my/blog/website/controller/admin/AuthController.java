@@ -58,6 +58,7 @@ public class AuthController extends BaseController {
         try {
             UserVo user = usersService.login(username, password);
             request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, user);
+            System.out.println(request.getSession().getMaxInactiveInterval());  //登陆成功后打印session的有效时间
             if (StringUtils.isNotBlank(remeber_me)) {
                 TaleUtils.setCookie(response, user.getUid());
             }

@@ -74,4 +74,6 @@ public interface ISiteService {
      * 查询文章归档,按照分类进行归档
      * */
     List<ArchiveBo> getArchivesByCat();
+
+
 }
